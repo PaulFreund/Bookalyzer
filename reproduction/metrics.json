@@ -1,0 +1,225 @@
+{
+  "book_quality_gate_passed": false,
+  "compatibility_audit": {
+    "affected_feature_count": 91,
+    "affected_row_count": 23297,
+    "encoded_dimension_if_compatible": 979,
+    "feature_set": "public_nonstyle_265",
+    "incompatible_values_path": "data/cache/reference_incompatible_values.parquet",
+    "invalid_cell_count": 26805,
+    "normalization_affected_cell_count": 40143,
+    "normalization_decision_count": 1769,
+    "normalization_decisions_path": "data/cache/reference_normalization_decisions.parquet",
+    "policy": "StoryScope Stage 5 canonicalization was applied and logged. Values still outside the taxonomy were not guessed, added as categories, or silently imputed.",
+    "published_source_coverage": {
+      "expected_complete_rows": 52728,
+      "incomplete_prompt_count": 49,
+      "missing_sources_by_prompt": {
+        "10011": [
+          "claude"
+        ],
+        "10045": [
+          "human"
+        ],
+        "10173": [
+          "human"
+        ],
+        "10202": [
+          "human"
+        ],
+        "10228": [
+          "gemini"
+        ],
+        "10251": [
+          "claude"
+        ],
+        "10407": [
+          "human"
+        ],
+        "10417": [
+          "human"
+        ],
+        "128": [
+          "human"
+        ],
+        "182": [
+          "claude"
+        ],
+        "1936": [
+          "claude"
+        ],
+        "2728": [
+          "claude"
+        ],
+        "282": [
+          "human"
+        ],
+        "307": [
+          "gemini"
+        ],
+        "3237": [
+          "human"
+        ],
+        "353": [
+          "human"
+        ],
+        "3766": [
+          "human"
+        ],
+        "4604": [
+          "claude"
+        ],
+        "4822": [
+          "gemini"
+        ],
+        "4857": [
+          "human"
+        ],
+        "5480": [
+          "human"
+        ],
+        "5485": [
+          "human"
+        ],
+        "5542": [
+          "human"
+        ],
+        "5787": [
+          "claude"
+        ],
+        "5868": [
+          "human"
+        ],
+        "5874": [
+          "human"
+        ],
+        "6441": [
+          "gemini"
+        ],
+        "668": [
+          "claude"
+        ],
+        "6861": [
+          "human"
+        ],
+        "6912": [
+          "claude"
+        ],
+        "6958": [
+          "claude"
+        ],
+        "7175": [
+          "claude"
+        ],
+        "7382": [
+          "claude"
+        ],
+        "77": [
+          "human"
+        ],
+        "7725": [
+          "human"
+        ],
+        "7755": [
+          "human"
+        ],
+        "8203": [
+          "gemini"
+        ],
+        "8324": [
+          "human"
+        ],
+        "8605": [
+          "human"
+        ],
+        "9077": [
+          "human"
+        ],
+        "9156": [
+          "human"
+        ],
+        "9197": [
+          "gemini"
+        ],
+        "9407": [
+          "human"
+        ],
+        "9424": [
+          "gemini"
+        ],
+        "9473": [
+          "gemini"
+        ],
+        "9594": [
+          "gemini",
+          "human"
+        ],
+        "9953": [
+          "human"
+        ],
+        "9975": [
+          "human"
+        ],
+        "9978": [
+          "human"
+        ]
+      },
+      "missing_story_rows": 50,
+      "published_rows": 52678,
+      "source_counts": {
+        "claude": 8776,
+        "deepseek": 8788,
+        "gemini": 8779,
+        "gpt": 8788,
+        "human": 8759,
+        "kimi": 8788
+      }
+    },
+    "schema_version": 1,
+    "status": "blocked_incompatible_public_artifacts",
+    "top_features": {
+      "AGENT_ATTR_003": 503,
+      "AGENT_ATTR_021": 1688,
+      "AGENT_EMO_002": 319,
+      "AGENT_ID_004": 37,
+      "AGENT_MOT_003": 258,
+      "AGENT_MOT_016": 179,
+      "AGENT_ROLE_002": 99,
+      "EVT_CAU_003": 153,
+      "PER_POV_007": 33,
+      "PLT_CON_003": 275,
+      "PLT_STR_001": 38,
+      "PLT_STR_009": 262,
+      "PLT_THM_004": 18226,
+      "PLT_THM_006": 111,
+      "SET_ATM_004": 97,
+      "SET_ATM_013": 313,
+      "SET_LOC_008": 995,
+      "SET_LOC_015": 133,
+      "SIT_GEN_001": 398,
+      "SIT_GEN_002": 41,
+      "SOC_DYN_010": 158,
+      "SOC_DYN_011": 315,
+      "SOC_REL_007": 128,
+      "SOC_REL_013": 92,
+      "TMP_DUR_012": 1692
+    }
+  },
+  "created_at_utc": "2026-07-17T06:18:31+00:00",
+  "exact_reproduction_claimed": false,
+  "feature_set": "public_nonstyle_265",
+  "known_artifact_gaps": [
+    "The paper's strict narrative set omits eight non-style-dimension feature IDs that are not published.",
+    "The paper reports 61,608 feature rows while the released parquet contains 61,575."
+  ],
+  "official_artifact_audit": {
+    "paper": "https://arxiv.org/abs/2604.03136v4",
+    "paper_source_checked": true,
+    "repository": "https://github.com/jenna-russell/storyscope",
+    "repository_commit": "642e746804e1ee4138ffdcf13b7412eb3dc2a70b",
+    "result": "No published mapping for out-of-taxonomy values and no list of the eight additional style-related feature IDs was found."
+  },
+  "reason": "Published StoryScope features remain incompatible with the published taxonomy after the official Stage 5 normalization rules: 26805 cells across 23297 rows and 91 features. Details: data/cache/reference_incompatible_values.parquet",
+  "schema_version": 1,
+  "status": "blocked_incompatible_public_artifacts"
+}

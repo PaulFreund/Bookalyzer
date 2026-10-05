@@ -1,0 +1,3 @@
+[submodule "vendor/storyscope"]
+	path = vendor/storyscope
+	url = https://github.com/jenna-russell/storyscope.git

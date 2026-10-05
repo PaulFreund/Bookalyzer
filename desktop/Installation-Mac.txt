@@ -1,0 +1,35 @@
+Bookalyzer installieren
+
+1. Bookalyzer aus diesem Fenster in den Ordner „Programme“ ziehen.
+2. Bookalyzer aus „Programme“ starten. Danach die DMG auswerfen.
+
+Für die lokale Textanalyse ist keine weitere Installation nötig.
+Python, Analysebibliotheken und öffentliche Referenzdaten sind enthalten.
+Eigene Texte und Baselines bleiben auf diesem Mac.
+
+Diese private Version benötigt keinen Apple-Developer-Zugang. Sie ist lokal
+signiert (ad hoc), aber nicht mit einer Developer ID signiert oder notarisiert.
+Falls macOS beim ersten Öffnen die Identität des Entwicklers beanstandet:
+Systemeinstellungen → Datenschutz & Sicherheit → „Dennoch öffnen“.
+Die Freigabe gilt nur für Bookalyzer und muss normalerweise nur einmal erfolgen.
+Auf verwalteten Firmenrechnern kann diese Freigabe gesperrt sein.
+Apple erklärt den Ablauf: https://support.apple.com/de-de/102445
+
+Benötigt: macOS 14 Sonoma oder neuer und die passende Prozessorfamilie.
+„arm64“ = Apple Silicon (M1/M2/M3/…); „x64“ = Intel.
+Die Angabe steht im Dateinamen der DMG. Den eigenen Prozessor findet man
+im Apple-Menü unter „Über diesen Mac“.
+
+Ein Update ersetzt nur Bookalyzer.app im Programme-Ordner. Die Bibliothek
+bleibt unter ~/Library/Application Support/Bookalyzer/library erhalten.
+Eine Bibliothek der früheren BookAnalyzer-Version bleibt an ihrem bisherigen
+Ort und wird von Bookalyzer automatisch weiterverwendet.
+Den tatsächlichen Speicherort zeigt die App unter „Methode & Studie“.
+
+Schnellstart:
+„Texte hinzufügen“ → Datei auswählen → Schreibziel und optional Kapitel wählen.
+„Textqualität“ zeigt Lesefluss, Wortwahl, Wiederholungen und Kapitelübersicht.
+Eine Fundstelle anklicken, um sie im Zusammenhang zu lesen.
+Unter „Texte und Kapitel auswählen“ lässt sich ein Referenztext speichern
+und ein direkter oder kapitelweiser Vergleich einstellen.
+„Kurzbericht“ exportiert das Ergebnis; „Details“ zeigt alle 51 Kennzahlen.

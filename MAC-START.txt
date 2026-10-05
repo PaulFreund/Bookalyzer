@@ -1,0 +1,34 @@
+Bookalyzer — DMG auf macOS erstellen
+
+Du brauchst dieses Baupaket nur einmal. Danach gibst du lediglich die fertige
+DMG weiter. Auf den anderen Macs sind Python, Node und Homebrew nicht nötig.
+Ein Apple-Developer-Konto ist für diesen ad hoc signierten Build nicht nötig.
+
+1. Dieses ZIP vollständig auf einem Mac entpacken (macOS 14 oder neuer).
+   Nicht die Windows-.venv oder node_modules aus einem anderen Ordner kopieren.
+2. Einmalig Homebrew installieren, falls noch nicht vorhanden: https://brew.sh/
+   Dort gibt es einen .pkg-Installer. Apples Command Line Tools bei Bedarf
+   ebenfalls installieren; das Bauskript weist dich darauf hin.
+3. „Mac-DMG-erstellen.command“ doppelklicken. Es richtet die Werkzeuge ein,
+   prüft die App und erstellt die DMG. Internet und einige GB freier Platz
+   sind nur für diesen Build nötig. Der erste Durchlauf kann länger dauern.
+4. Am Ende öffnet sich der Ausgabeordner. Die Datei
+   „Bookalyzer-0.5.3-mac-arm64.dmg“ (Apple Silicon) bzw.
+   „Bookalyzer-0.5.3-mac-x64.dmg“ (Intel) kannst du weitergeben.
+
+Falls der Doppelklick des Skripts nicht klappt: Terminal öffnen, „bash “
+(mit Leerzeichen) eintippen, Mac-DMG-erstellen.command hineinziehen, Enter.
+
+Installation: DMG öffnen → Bookalyzer nach Programme ziehen → starten.
+Beim ersten Start eventuell Systemeinstellungen → Datenschutz & Sicherheit
+→ Dennoch öffnen. Dieser ad hoc signierte Build ist nicht von Apple notarisiert.
+
+Der Build passt zur Prozessorfamilie des Build-Macs. Für Intel und Apple
+Silicon zusammen braucht man je einen Build auf der jeweiligen Architektur.
+
+Ausführliche Anleitung und Fehlerhilfe: MAC_INSTALL.md
+Build-Protokoll bei Problemen: build/mac-build.log
+
+Stand der Prüfung: Quellpaket und Windows-App wurden auf Windows geprüft.
+Der native Mac-Build und Starttest werden durch dieses Skript auf dem
+Build-Mac durchgeführt. Dieses ZIP ist noch keine fertige DMG.

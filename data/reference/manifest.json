@@ -1,0 +1,52 @@
+{
+  "created_at_utc": "2026-07-17T06:20:24+00:00",
+  "dataset": "jjrussell10/storyscope",
+  "files": [
+    {
+      "downloaded_at_utc": "2026-07-17T05:51:39+00:00",
+      "modified_at_utc": "2026-07-17T05:51:39+00:00",
+      "name": "stories_train.parquet",
+      "path": "data/reference/storyscope/stories_train.parquet",
+      "sha256": "b58eeab6d65a981baf847ffa94e92500b434010766c1d8279abdf249388b7153",
+      "size_bytes": 577918326,
+      "source_url": "https://huggingface.co/datasets/jjrussell10/storyscope/resolve/main/stories_train.parquet"
+    },
+    {
+      "downloaded_at_utc": "2026-07-17T05:51:27+00:00",
+      "modified_at_utc": "2026-07-17T05:51:27+00:00",
+      "name": "stories_val.parquet",
+      "path": "data/reference/storyscope/stories_val.parquet",
+      "sha256": "95ddac0cca1a0a81bce230d7a89b71037b90a98440caa0875b68cee57f7b0098",
+      "size_bytes": 113552243,
+      "source_url": "https://huggingface.co/datasets/jjrussell10/storyscope/resolve/main/stories_val.parquet"
+    },
+    {
+      "downloaded_at_utc": "2026-07-17T05:51:22+00:00",
+      "modified_at_utc": "2026-07-17T05:51:22+00:00",
+      "name": "stories_test.parquet",
+      "path": "data/reference/storyscope/stories_test.parquet",
+      "sha256": "8c87b32bb01cb5ea2da10461bf3d1832591242abce1e643191205f9353e649be",
+      "size_bytes": 110879490,
+      "source_url": "https://huggingface.co/datasets/jjrussell10/storyscope/resolve/main/stories_test.parquet"
+    },
+    {
+      "downloaded_at_utc": "2026-07-17T05:51:19+00:00",
+      "modified_at_utc": "2026-07-17T05:51:19+00:00",
+      "name": "storyscope_features.parquet",
+      "path": "data/reference/storyscope/storyscope_features.parquet",
+      "sha256": "ad633a08deb0406d97b92aa4905f29a63bf925d3daceecce6c1b04c47ae2f293",
+      "size_bytes": 7655015,
+      "source_url": "https://huggingface.co/datasets/jjrussell10/storyscope/resolve/main/storyscope_features.parquet"
+    },
+    {
+      "downloaded_at_utc": "2026-07-17T05:51:20+00:00",
+      "modified_at_utc": "2026-07-17T05:51:20+00:00",
+      "name": "taxonomy.json",
+      "path": "data/reference/storyscope/taxonomy.json",
+      "sha256": "e7302f37e437928a16149e0c4bba2432d7f148cf65bf5d16772ac65e97265d5e",
+      "size_bytes": 285139,
+      "source_url": "https://huggingface.co/datasets/jjrussell10/storyscope/resolve/main/taxonomy.json"
+    }
+  ],
+  "schema_version": 1
+}

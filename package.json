@@ -1,0 +1,118 @@
+{
+  "name": "bookalyzer-desktop",
+  "version": "0.5.3",
+  "private": true,
+  "description": "Visuelles Textlabor auf Basis von StoryScope",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1",
+    "start": "npm run build && electron .",
+    "desktop": "electron .",
+    "build": "tsc --noEmit && vite build",
+    "test": "node scripts/python.cjs -m pytest -q",
+    "test:desktop": "npm run build && electron . --smoke-test",
+    "test:reports": "node desktop/test-reports.cjs",
+    "format": "prettier --write src desktop vite.config.mjs package.json tsconfig.json index.html",
+    "package:win": "node scripts/package.cjs win",
+    "build:backend": "node scripts/python.cjs scripts/build_backend.py",
+    "test:runtime": "node scripts/test-runtime.cjs",
+    "package:mac": "node scripts/package.cjs mac --config desktop/preview.mac.cjs",
+    "package:mac:release": "node scripts/package.cjs mac --config desktop/release.mac.cjs",
+    "test:packaged": "node scripts/test-packaged.cjs",
+    "test:comparisons": "node desktop/test-library-path.cjs && node scripts/test-comparison-reports.cjs",
+    "test:pdf": "electron desktop/test-pdf.cjs",
+    "demo:readme": "node scripts/python.cjs scripts/prepare_readme_demo.py",
+    "screenshots:readme": "node scripts/capture_readme.cjs",
+    "package:mac:source": "node scripts/python.cjs scripts/package_mac_source.py"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.18.0",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.3",
+    "electron": "^44.4.5",
+    "electron-builder": "^26.0.12",
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.7"
+  },
+  "build": {
+    "appId": "dev.bookanalyzer.desktop",
+    "productName": "Bookalyzer",
+    "electronDist": "node_modules/electron/dist",
+    "npmRebuild": false,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**",
+      "desktop-dist/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "extraResources": [
+      {
+        "from": "build/runtime/bookalyzer-service",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.productivity",
+      "minimumSystemVersion": "14.0",
+      "hardenedRuntime": true,
+      "entitlements": "desktop/entitlements.mac.plist",
+      "entitlementsInherit": "desktop/entitlements.mac.plist",
+      "binaries": [
+        "Contents/Resources/backend/bookalyzer-service"
+      ]
+    },
+    "dmg": {
+      "contents": [
+        {
+          "x": 145,
+          "y": 180,
+          "type": "file"
+        },
+        {
+          "x": 425,
+          "y": 180,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 285,
+          "y": 290,
+          "type": "file",
+          "path": "desktop/Installation-Mac.txt"
+        }
+      ],
+      "window": {
+        "width": 570,
+        "height": 360
+      }
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": false,
+      "createDesktopShortcut": true
+    },
+    "artifactName": "Bookalyzer-${version}-${os}-${arch}.${ext}",
+    "icon": "desktop/icon.png"
+  }
+}

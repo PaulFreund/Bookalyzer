@@ -1,0 +1,54 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Rights-sensitive source material and model responses must never be committed.
+input/books/*
+!input/books/.gitkeep
+data/processed/*
+!data/processed/.gitkeep
+data/features/*
+!data/features/.gitkeep
+data/cache/*
+!data/cache/.gitkeep
+
+# Published reference binaries are reproducibly described by the manifest.
+data/reference/storyscope/*
+!data/reference/storyscope/.gitkeep
+
+# Generated outputs and reproduction artifacts.
+outputs/*
+!outputs/.gitkeep
+reproduction/*.png
+reproduction/*.svg
+reproduction/*.parquet
+
+# Local credentials and explicit rights-holder approvals.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+.npmrc
+.pypirc
+.netrc
+config/rights_approval.yaml
+
+# Desktop application dependencies, private library, and generated bundles.
+node_modules/
+.bookanalyzer/
+.bookanalyzer-backups/
+.bookalyzer-import-*/
+.bookalyzer-previous-*/
+.bookalyzer-export-*/
+desktop-dist/
+release/
+*.log

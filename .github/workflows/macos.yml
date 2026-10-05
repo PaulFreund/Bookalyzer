@@ -1,0 +1,84 @@
+name: macOS app
+on:
+  workflow_dispatch:
+    inputs:
+      signed_release:
+        description: Sign and notarize a distributable release (Apple secrets required)
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            arch: arm64
+          - runner: macos-15-intel
+            arch: x64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 45
+    env:
+      MACOSX_DEPLOYMENT_TARGET: '14.0'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          architecture: ${{ matrix.arch }}
+      - name: Prepare pinned cryptography source build on Intel
+        if: ${{ matrix.arch == 'x64' }}
+        run: |
+          brew install rust openssl@3 pkgconf
+          echo "OPENSSL_DIR=$(brew --prefix openssl@3)" >> "$GITHUB_ENV"
+          echo "OPENSSL_STATIC=1" >> "$GITHUB_ENV"
+      - name: Install build dependencies
+        run: |
+          python -m venv .venv
+          .venv/bin/python -m pip install -r requirements.lock -r requirements-build.txt
+          npm ci
+          node scripts/python.cjs scripts/build_backend.py --assets-only
+      - name: Test analysis and renderer
+        run: |
+          npm test
+          npm run build
+          npm run test:comparisons
+          npm run test:pdf
+      - name: Build private DMG
+        if: ${{ !inputs.signed_release }}
+        run: npm run package:mac
+      - name: Build signed and notarized release
+        if: ${{ inputs.signed_release }}
+        env:
+          CSC_LINK: ${{ secrets.MAC_CSC_LINK }}
+          CSC_KEY_PASSWORD: ${{ secrets.MAC_CSC_KEY_PASSWORD }}
+          APPLE_ID: ${{ secrets.APPLE_ID }}
+          APPLE_APP_SPECIFIC_PASSWORD: ${{ secrets.APPLE_APP_SPECIFIC_PASSWORD }}
+          APPLE_TEAM_ID: ${{ secrets.APPLE_TEAM_ID }}
+        run: npm run package:mac:release
+      - name: Test bundled runtime and packaged app from an empty directory
+        run: |
+          npm run test:runtime
+          node scripts/test-packaged.cjs
+      - name: Check release signature and Gatekeeper
+        if: ${{ inputs.signed_release }}
+        run: |
+          APP="$(find release -maxdepth 2 -name Bookalyzer.app -print -quit)"
+          codesign --verify --deep --strict --verbose=2 "$APP"
+          xcrun stapler validate "$APP"
+          spctl --assess --type execute --verbose=2 "$APP"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Bookalyzer-mac-${{ matrix.arch }}-${{ inputs.signed_release && 'notarized' || 'preview' }}
+          path: |
+            release/*.dmg
+            release/*.zip
+          if-no-files-found: error

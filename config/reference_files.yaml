@@ -1,0 +1,17 @@
+dataset: jjrussell10/storyscope
+files:
+  stories_train.parquet:
+    size_bytes: 577918326
+    sha256: b58eeab6d65a981baf847ffa94e92500b434010766c1d8279abdf249388b7153
+  stories_val.parquet:
+    size_bytes: 113552243
+    sha256: 95ddac0cca1a0a81bce230d7a89b71037b90a98440caa0875b68cee57f7b0098
+  stories_test.parquet:
+    size_bytes: 110879490
+    sha256: 8c87b32bb01cb5ea2da10461bf3d1832591242abce1e643191205f9353e649be
+  storyscope_features.parquet:
+    size_bytes: 7655015
+    sha256: ad633a08deb0406d97b92aa4905f29a63bf925d3daceecce6c1b04c47ae2f293
+  taxonomy.json:
+    size_bytes: 285139
+    sha256: e7302f37e437928a16149e0c4bba2432d7f148cf65bf5d16772ac65e97265d5e

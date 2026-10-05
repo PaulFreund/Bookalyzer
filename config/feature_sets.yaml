@@ -1,0 +1,26 @@
+feature_sets:
+  full_304:
+    description: All 304 public StoryScope features.
+    include_dimensions: "*"
+    excluded_feature_ids: []
+    expected_features: 304
+    status: available
+
+  public_nonstyle_265:
+    description: Public reconstruction with the full 39-feature style dimension removed.
+    include_dimensions: "*"
+    exclude_dimensions: [style]
+    excluded_feature_ids: []
+    expected_features: 265
+    status: available
+
+  paper_narrative_257:
+    description: Paper narrative set; blocked until the eight additional official IDs are known.
+    include_dimensions: "*"
+    exclude_dimensions: [style]
+    excluded_feature_ids: []
+    expected_features: 257
+    status: blocked
+    blocked_reason: >-
+      The paper excludes eight additional style-dependent features, but their
+      IDs are absent from the published taxonomy and other official artifacts.

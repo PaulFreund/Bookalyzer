@@ -1,0 +1,40 @@
+paths:
+  books: input/books
+  processed: data/processed
+  reference: data/reference/storyscope
+  raw_features: data/features/raw
+  book_features: data/features/book_features.parquet
+  cache: data/cache
+  outputs: outputs
+  reproduction: reproduction
+
+ingest:
+  unicode_normalization: NFC
+  exclude_frontmatter: true
+  exclude_backmatter: true
+  pdf_min_words_per_page: 20
+  repeated_margin_fraction: 0.5
+
+segmentation:
+  target_words: 5000
+  min_words: 3000
+  max_words: 7000
+  overlap_words: 0
+  prefer_chapter_and_scene_boundaries: true
+
+rarity:
+  reference_splits: [train, val]
+  evaluation_split: test
+  sources: [human, claude, gpt, deepseek, kimi, gemini]
+  k: 25
+  metric: euclidean
+  exact: true
+  percentile_ties: right
+  query_batch_size: 256
+  reference_block_size: 4096
+
+analysis:
+  default_feature_set: public_nonstyle_265
+  language_note: >-
+    The StoryScope reference corpus is English. Results for other languages are
+    exploratory and must be accompanied by a language-consistent internal view.
